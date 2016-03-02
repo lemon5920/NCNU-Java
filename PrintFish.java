@@ -15,17 +15,17 @@ public class PrintFish {
 
         for(int i = 1;i <= n; i++){
             printNChar( (n-i) * 3, ' ');
-            printNChar( i * 3 + 3 * (i-1), '*');
+            printNChar( 6 * i - 3, '*');
             printNChar( (n-i) * 3 + (n-i), ' ');
-            printNChar( i-1, '*');
+            printNChar( i - 1, '*');
             System.out.println();
         }
 
         for(int i = n-1 ;i >= 1; i--){
             printNChar( (n-i) * 3, ' ');
-            printNChar( i*3 + 3 * (i-1), '*');
+            printNChar( 6 * i - 3, '*');
             printNChar( (n-i) * 3 + (n-i), ' ');
-            printNChar( i-1, '*');
+            printNChar( i - 1, '*');
             System.out.println();
         }
 
