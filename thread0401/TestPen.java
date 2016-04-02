@@ -3,12 +3,29 @@ import java.lang.*;
 public class TestPen {
 
     public static Pen p = new Pen();
+    private int x, y;
+    private double h, r;
+
+    public TestPen(int x, int y, double h, double r) {
+        this.x = x;
+        this.y = y;
+        this.h = h;
+        this.r = r;
+    }
+
+    public void run() {
+        fractalLine(x, y, h, r);    
+    }
+
+    public synchronized static void drawPoint(int x, int y) {
+        p.flyTo(x, y);
+        p.runTo(x, y);
+    }
 
     public static void fractalLine(int x, int y, double h, double r) {
 
         if(h <= 1){
-            p.flyTo(x, y);
-            p.runTo(x, y);
+            drawPoint(x, y);
             try {
                 Thread.currentThread().sleep(10);
             } catch(Exception err){
@@ -41,16 +58,14 @@ public class TestPen {
         double 等分角 = 360.0/n;
         double 邊長 = 2 * h * Math.sin(Math.toRadians(等分角/2));
 
-        // 先到第一個頂點
-        //p.flyTo((int)(x + h * Math.cos(Math.toRadians(-90))), (int)(x + h * Math.sin(Math.toRadians(-90))));
-
         // 算出n個頂點的座標
         for(int i = 0 ; i < n ; i++) {
             int topX = (int)(x + h * Math.cos(Math.toRadians(i * 等分角 - 90)));
             int topY = (int)(y + h * Math.sin(Math.toRadians(i * 等分角 - 90)));
-            fractalLine(topX, topY, 邊長, (i+0.5) * 等分角);
+            Thread t = new TestPen();
+            
+            //fractalLine(topX, topY, 邊長, (i+0.5) * 等分角);
         }
-
     }
 
     public static void main(String[] argv) {
