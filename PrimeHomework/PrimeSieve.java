@@ -2,7 +2,6 @@
 質數，刪去法
 */
 import java.util.Scanner;
-import java.util.Vector;
 public class PrimeSieve {
     public static void main(String[] argv) {
         Scanner sc = new Scanner(System.in);
