@@ -17,6 +17,7 @@ public class TestPen {
         fractalLine(x, y, h, r);    
     }
 
+    // synchronized 只能讓某個 Thread 執行，不能讓其他 Thread 搶走。
     public synchronized static void drawPoint(int x, int y) {
         p.flyTo(x, y);
         p.runTo(x, y);
