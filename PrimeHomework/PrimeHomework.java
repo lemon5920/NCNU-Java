@@ -57,12 +57,12 @@ public class PrimeHomework {
         Scanner sc = new Scanner(System.in);
         int number = sc.nextInt();
         long startTime, endTime;
-/*
+        
         startTime = System.currentTimeMillis();
         System.out.print("測試法 " + test(number) + "個 ");
         endTime = System.currentTimeMillis();
         System.out.println((endTime - startTime) + "ms");
-*/
+
         startTime = System.currentTimeMillis();
         System.out.print("刪除法 " + sieve(number) + "個 ");
         endTime = System.currentTimeMillis();
