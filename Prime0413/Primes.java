@@ -13,16 +13,22 @@ class Primes {
                 counter++;
         return counter;
     }
-    public static int p2(long n) {
+    public static long p2(long n) {
         // the default value of boolean array is false
-        boolean[] deleted = new boolean[(int)(n/2+1)];
-        int counter = 1;
-        for(long i = 3; i <= n; i+=2) {
-            if(!deleted[(int)(i/2)]) { // find a primes
+        long maxLen = 2000000000L;
+        boolean[][] deleted = new boolean[(int)((n-1)/2/maxLen+1)][];
+        long index = 0;
+        for (; (index+1)*2*maxLen <= n; index++) {
+            deleted[(int)index] = new boolean[(int)maxLen];
+        }
+        if (n-index*2*maxLen > 0)
+            deleted[(int)(index)] = new boolean[(int)(n-index*2*maxLen)];
+        long counter = 1;
+        for (long i = 3; i <= n; i+=2) {
+            if (!deleted[(int)(i/2/maxLen)][(int)(i/2%maxLen)]) { // find a primes
                 counter++;
-                for(long j = 3 * i; j <= n; j += 2*i) {
-                    deleted[(int)(j/2)] = true;
-                }
+                for (long j = 3 * i; j <= n; j += 2*i)
+                    deleted[(int)(j/2/maxLen)][(int)(j/2%maxLen)] = true;
             }
         }
         return counter;
