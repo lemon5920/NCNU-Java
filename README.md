@@ -7,3 +7,4 @@
 + 0304 -	Extend 0302, used BigInteger and BigDecimal.
 + 0309 ~ 0916 - Object-oriented programming.
 + 0318 -    print shape and fractal shape with GUI.
++ 0618 - end
